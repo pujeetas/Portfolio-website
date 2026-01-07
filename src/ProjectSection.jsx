@@ -126,7 +126,7 @@ function ProjectsSection() {
             </div>
 
             {/* Video */}
-            <div className="relative rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 min-h-[300px]">
+            <div className="relative rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 min-h-75">
               {featuredProject.video ? (
                 <video
                   src={featuredProject.video}

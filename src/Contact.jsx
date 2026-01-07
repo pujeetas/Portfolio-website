@@ -21,14 +21,14 @@ const Contact = () => {
         {/* Primary CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <a
-            href="mailto:pujeeta@example.com"
+            href="mailto:pujeeta98@gmail.com"
             className="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition border border-zinc-700 font-medium text-sm"
           >
             Email me
           </a>
 
           <a
-            href="/resume.pdf"
+            href="/Pujeeta_Singh_Resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="px-8 py-3 bg-transparent hover:bg-zinc-900 text-white rounded-lg transition border border-zinc-700 font-medium text-sm"
