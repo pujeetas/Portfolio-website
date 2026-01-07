@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const PROJECTS = [
@@ -7,9 +6,22 @@ const PROJECTS = [
     title: "DailyDeck",
     category: "Productivity Platform",
     description:
-      "Full-stack productivity workspace with Kanban board, block-based editor, and analytics dashboard. Engineered for seamless developer workflows.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    links: { demo: "#", github: "#" },
+      "Full-stack productivity SaaS application with Kanban boards, block-based note editor, and analytics. Features RAG-powered semantic search using MongoDB Vector Search and AI responses via Anthropic Claude API.",
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Vercel",
+      "Anthropic Claude API",
+      "RAG/Vector Search",
+    ],
+    links: {
+      demo: "https://daily-deck-ten.vercel.app/",
+      github: "https://github.com/pujeetas/DailyDeck",
+    },
+    video: "/RAG_DEMO.mp4",
+    image: "/dailydeck-screenshot.png",
     featured: true,
   },
   {
@@ -19,17 +31,23 @@ const PROJECTS = [
     description:
       "AI-powered documentation assistant leveraging Retrieval-Augmented Generation for real-time PDF interaction.",
     tech: ["Node.js", "OpenAI", "Vector DB"],
-    links: { demo: "#", github: "#" },
+    links: {
+      demo: "https://github.com/pujeetas/docuchat",
+      github: "https://github.com/pujeetas/docuchat",
+    },
     featured: false,
   },
   {
     id: 3,
-    title: "Portfolio V1",
+    title: "Portfolio Website",
     category: "Web Engineering",
     description:
       "Modern, performance-optimized portfolio with smooth animations and responsive design.",
     tech: ["React", "Tailwind", "Framer Motion"],
-    links: { demo: "#", github: "#" },
+    links: {
+      demo: "https://pujeeta.dev",
+      github: "https://github.com/pujeetas/portfolio",
+    },
     featured: false,
   },
 ];
@@ -54,7 +72,6 @@ function ProjectsSection() {
           Featured Work
         </motion.h2>
 
-        {/* Featured Project */}
         {featuredProject && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -67,12 +84,15 @@ function ProjectsSection() {
               <span className="text-sm text-zinc-500 mb-2">
                 {featuredProject.category}
               </span>
+
               <h3 className="font-engineer text-2xl md:text-3xl font-semibold mb-4">
                 {featuredProject.title}
               </h3>
+
               <p className="text-zinc-400 mb-6 leading-relaxed">
                 {featuredProject.description}
               </p>
+
               <div className="flex flex-wrap gap-2 mb-6">
                 {featuredProject.tech.map((tech) => (
                   <span
@@ -83,30 +103,59 @@ function ProjectsSection() {
                   </span>
                 ))}
               </div>
+
               <div className="flex gap-4">
                 <a
                   href={featuredProject.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm border border-zinc-700 transition"
                 >
                   View Demo
                 </a>
+
                 <a
                   href={featuredProject.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-2 bg-transparent hover:bg-zinc-800 rounded-lg text-sm border border-zinc-700 transition"
                 >
                   View Code
                 </a>
               </div>
             </div>
-            <div className="relative rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 flex items-center justify-center min-h-[200px]">
-              <span className="font-engineer text-zinc-600">
-                Project Preview
-              </span>
+
+            {/* Video */}
+            <div className="relative rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 min-h-[300px]">
+              {featuredProject.video ? (
+                <video
+                  src={featuredProject.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  onError={(e) => console.error("Video failed to load:", e)}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : featuredProject.image ? (
+                <img
+                  src={featuredProject.image}
+                  alt={`${featuredProject.title} Screenshot`}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-full">
+                  <span className="font-engineer text-zinc-600">
+                    Project Preview
+                  </span>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
 
-        {/* Supporting Projects */}
         <div className="grid md:grid-cols-2 gap-8">
           {otherProjects.map((project, index) => (
             <motion.div
@@ -120,12 +169,15 @@ function ProjectsSection() {
               <span className="text-xs text-zinc-500 block mb-1">
                 {project.category}
               </span>
+
               <h4 className="font-engineer text-xl font-semibold mb-2">
                 {project.title}
               </h4>
+
               <p className="text-zinc-400 text-sm mb-4">
                 {project.description}
               </p>
+
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech) => (
                   <span key={tech} className="text-xs text-zinc-500">
@@ -133,19 +185,29 @@ function ProjectsSection() {
                   </span>
                 ))}
               </div>
+
               <div className="flex gap-4 text-sm">
-                <a
-                  href={project.links.demo}
-                  className="text-zinc-400 hover:text-white transition"
-                >
-                  Demo →
-                </a>
-                <a
-                  href={project.links.github}
-                  className="text-zinc-400 hover:text-white transition"
-                >
-                  Code →
-                </a>
+                {project.links.demo && (
+                  <a
+                    href={project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-400 hover:text-white transition"
+                  >
+                    Demo →
+                  </a>
+                )}
+
+                {project.links.github && (
+                  <a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-400 hover:text-white transition"
+                  >
+                    Code →
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
