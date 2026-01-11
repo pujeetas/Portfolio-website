@@ -38,9 +38,9 @@ const PROJECTS = [
       },
       {
         icon: "🔧",
-        title: "PayloadLab JSON Generator",
+        title: "PayloadLab",
         description:
-          "Professional mock data generator with customizable schemas, support for nested objects and arrays, 15+ data types, and bulk generation for rapid API development and testing",
+          "Professional JSON toolkit featuring (1) Mock data generator with customizable schemas, nested objects, 15+ data types, and bulk generation, (2) JSON parser for validation, formatting, and minification",
       },
     ],
   },
