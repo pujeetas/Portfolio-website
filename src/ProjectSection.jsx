@@ -14,7 +14,7 @@ const PROJECTS = [
       "MongoDB",
       "Vercel",
       "Anthropic Claude API",
-      "RAG/Vector Search",
+      "RAG / Vector Search",
     ],
     links: {
       demo: "https://daily-deck-ten.vercel.app/",
@@ -28,24 +28,39 @@ const PROJECTS = [
         icon: "📝",
         title: "Smart Notes with AI Search",
         description:
-          "Block-based editor powered by BlockNote with RAG-driven semantic search. Ask questions about your notes and get intelligent AI-generated answers using MongoDB Vector Search and Anthropic Claude API",
+          "Block-based editor powered by BlockNote with RAG-driven semantic search. Ask questions about your notes and get intelligent AI-generated answers using MongoDB Vector Search and Anthropic Claude API.",
       },
       {
         icon: "✅",
         title: "Advanced Task Management",
         description:
-          "Full-featured Kanban boards with intuitive drag-and-drop interface, calendar view for deadline visualization, productivity analytics dashboard, and seamless GitHub issue import via link paste",
+          "Full-featured Kanban boards with intuitive drag-and-drop interface, calendar view for deadline visualization, productivity analytics dashboard, and seamless GitHub issue import.",
       },
       {
         icon: "🔧",
         title: "PayloadLab",
         description:
-          "Professional JSON toolkit featuring (1) Mock data generator with customizable schemas, nested objects, 15+ data types, and bulk generation, (2) JSON parser for validation, formatting, and minification",
+          "Professional JSON toolkit featuring mock data generation with custom schemas, nested objects, 15+ data types, and a full JSON parser for validation and formatting.",
       },
     ],
   },
   {
     id: 2,
+    title: "CodeCanvas ",
+    category: "Real-Time Collaboration Tool",
+    description:
+      "Real-time collaborative whiteboard where multiple users can draw simultaneously and communicate via integrated chat. Uses WebSocket for bidirectional sync of canvas state and messages.",
+
+    tech: ["React", "TypeScript", "Node.js", "Socket.io", "Tailwind CSS"],
+    links: {
+      demo: null,
+      github: "https://github.com/pujeetas/chat-app",
+    },
+    featured: false,
+    status: "In Development",
+  },
+  {
+    id: 3,
     title: "Portfolio Website",
     category: "Web Engineering",
     description:
@@ -133,7 +148,6 @@ function ProjectsSection() {
                 </div>
               </div>
 
-              {/* Video / Image */}
               <div className="relative rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 min-h-[400px]">
                 {featuredProject.video ? (
                   <video
@@ -147,7 +161,7 @@ function ProjectsSection() {
                 ) : featuredProject.image ? (
                   <img
                     src={featuredProject.image}
-                    alt={`${featuredProject.title} Screenshot`}
+                    alt={`${featuredProject.title} screenshot`}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -173,10 +187,7 @@ function ProjectsSection() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{
-                        duration: 0.4,
-                        delay: idx * 0.1,
-                      }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
                       className="bg-zinc-800/40 border border-zinc-700/50 rounded-lg p-5 hover:border-zinc-600 transition-colors"
                     >
                       <div className="text-3xl mb-3">{feature.icon}</div>
@@ -207,15 +218,19 @@ function ProjectsSection() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.2,
-                  }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
                   className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition"
                 >
-                  <span className="text-xs text-zinc-500 block mb-1">
-                    {project.category}
-                  </span>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs text-zinc-500">
+                      {project.category}
+                    </span>
+                    {project.status && (
+                      <span className="text-xs px-2 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 animate-[glow_2s_ease-in-out_infinite]">
+                        {project.status}
+                      </span>
+                    )}
+                  </div>
 
                   <h4 className="font-engineer text-xl font-semibold mb-2">
                     {project.title}
