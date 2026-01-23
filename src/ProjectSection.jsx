@@ -42,6 +42,12 @@ const PROJECTS = [
         description:
           "Professional JSON toolkit featuring mock data generation with custom schemas, nested objects, 15+ data types, and a full JSON parser for validation and formatting.",
       },
+      {
+        icon: "🧪",
+        title: "Production-Grade Testing",
+        description:
+          "Comprehensive test suite with 47% coverage using Vitest and React Testing Library. Unit and integration tests for authentication, task management, and form workflows.",
+      },
     ],
   },
   {
