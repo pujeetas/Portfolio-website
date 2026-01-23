@@ -1,5 +1,3 @@
-import React from "react";
-
 const Contact = () => {
   return (
     <section
@@ -14,8 +12,9 @@ const Contact = () => {
 
         {/* Subtext */}
         <p className="text-zinc-400 text-lg mb-10 leading-relaxed">
-          I’m open to full-stack and AI-focused roles where I can work on
-          real-world problems, scalable systems, and production-ready products.
+          I'm open to full-stack and AI-focused roles in Singapore where I can
+          work on real-world problems, scalable systems, and production-ready
+          products.
         </p>
 
         {/* Primary CTA */}
