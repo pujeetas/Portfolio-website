@@ -6,17 +6,18 @@ const PROJECTS = [
     title: "DailyDeck",
     category: "Full-Stack Productivity SaaS",
     description:
-      "Comprehensive productivity platform with three powerful modules: Smart Notes with AI-powered RAG search, Task Manager featuring Kanban boards with drag-and-drop, calendar views, and GitHub integration, and JSON Generator for rapid API prototyping. Built with MongoDB Vector Search and Anthropic Claude API.",
+      "Built and operated production SaaS with authentication, AI-powered search, and cloud deployment—handling end-to-end architecture decisions and technical tradeoffs. Designed RAG pipeline using MongoDB Vector Search after evaluating Pinecone and Weaviate, prioritizing sub-200ms query latency and operational simplicity. Features Smart Notes with semantic search across 1000+ embedded documents, advanced Task Manager with Kanban boards and GitHub integration, and PayloadLab for API prototyping.",
     tech: [
-      "React",
+      "React 19",
       "Node.js",
       "Express",
-      "MongoDB",
+      "MongoDB Atlas",
+      "Vector Search",
       "Vercel",
       "Anthropic Claude API",
-      "RAG / Vector Search",
-      "Vitest",
-      "Testing Library",
+      "Cohere",
+      "TailwindCSS",
+      "Zustand",
     ],
     links: {
       demo: "https://daily-deck-ten.vercel.app/",
@@ -30,19 +31,19 @@ const PROJECTS = [
         icon: "📝",
         title: "Smart Notes with AI Search",
         description:
-          "Block-based editor powered by BlockNote with RAG-driven semantic search. Ask questions about your notes and get intelligent AI-generated answers using MongoDB Vector Search and Anthropic Claude API.",
+          "Block-based editor with RAG-driven semantic search using MongoDB Vector Search and Anthropic Claude API. Ask questions about your notes and get intelligent AI-generated answers from 1000+ embedded documents.",
       },
       {
         icon: "✅",
         title: "Advanced Task Management",
         description:
-          "Full-featured Kanban boards with intuitive drag-and-drop interface, calendar view for deadline visualization, productivity analytics dashboard, and seamless GitHub issue import.",
+          "Full-featured Kanban boards with drag-and-drop, calendar view for deadlines, productivity analytics, and seamless GitHub issue import for developer workflows.",
       },
       {
         icon: "🔧",
-        title: "PayloadLab",
+        title: "PayloadLab - JSON Generator",
         description:
-          "Professional JSON toolkit featuring mock data generation with custom schemas, nested objects, 15+ data types, and a full JSON parser for validation and formatting.",
+          "Professional JSON toolkit with mock data generation, custom schemas, nested objects, 15+ data types, and full JSON parser for validation and formatting.",
       },
     ],
   },
