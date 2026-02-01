@@ -49,15 +49,24 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: "CodeCanvas ",
-    category: "Real-Time Collaboration Tool",
+    title: "TrueMatch",
+    category: "AI-Powered Job Matching Platform",
     description:
-      "Real-time collaborative whiteboard where multiple users can draw simultaneously and communicate via integrated chat. Uses WebSocket for bidirectional sync of canvas state and messages.",
-
-    tech: ["React", "TypeScript", "Node.js", "Socket.io", "Tailwind CSS"],
+      "Built GraphQL-based job board solving real recruitment pain points: semantic skill matching (React.js = ReactJS), automated truth scoring for misleading job posts, and intelligent resume-to-JD gap analysis. Architected with Apollo Server v4, Prisma 7, and PostgreSQL connection pooling for production-grade performance.",
+    tech: [
+      "GraphQL",
+      "Apollo Server v4",
+      "Prisma 7",
+      "PostgreSQL",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Supabase",
+      "React 19 (planned)",
+    ],
     links: {
       demo: null,
-      github: "https://github.com/pujeetas/chat-app",
+      github: "https://github.com/pujeetas/TrueMatch",
     },
     featured: false,
     status: "In Development",
