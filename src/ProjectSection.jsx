@@ -49,27 +49,48 @@ const PROJECTS = [
   },
   {
     id: 2,
-    title: "TrueMatch",
-    category: "AI-Powered Job Matching Platform",
+    title: "Vericode",
+    category: "AI-Powered Code Review Tool",
     description:
-      "Built GraphQL-based job board solving real recruitment pain points: semantic skill matching (React.js = ReactJS), automated truth scoring for misleading job posts, and intelligent resume-to-JD gap analysis. Architected with Apollo Server v4, Prisma 7, and PostgreSQL connection pooling for production-grade performance.",
+      "Built a production full-stack code review platform powered by Claude AI. Architected a two-stage LLM pipeline — language detection followed by structured review — streamed back in real time using Server-Sent Events. Every review is saved to PostgreSQL with a UUID-based shareable link. Deployed on Vercel and Render, with initial infrastructure on AWS EC2.",
     tech: [
-      "GraphQL",
-      "Apollo Server v4",
-      "Prisma 7",
-      "PostgreSQL",
+      "React",
       "TypeScript",
       "Node.js",
       "Express",
+      "Claude API",
+      "PostgreSQL",
       "Supabase",
-      "React 19 (planned)",
+      "AWS EC2",
+      "Render",
+      "Vercel",
+      "TailwindCSS",
     ],
     links: {
-      demo: null,
-      github: "https://github.com/pujeetas/TrueMatch",
+      demo: "https://vericode-ten.vercel.app",
+      github: "https://github.com/pujeetas/vericode",
     },
     featured: false,
-    status: "In Development",
+    features: [
+      {
+        icon: "🤖",
+        title: "AI Streaming Review",
+        description:
+          "Real-time code feedback streamed token-by-token using SSE and Claude API with auto language detection.",
+      },
+      {
+        icon: "🔒",
+        title: "5 Review Modes",
+        description:
+          "Security, performance, bug detection, documentation, and general quality reviews with automatic severity scoring.",
+      },
+      {
+        icon: "🔗",
+        title: "Shareable Links",
+        description:
+          "Every review saved to PostgreSQL with a unique UUID, accessible via permanent shareable URL.",
+      },
+    ],
   },
   {
     id: 3,
