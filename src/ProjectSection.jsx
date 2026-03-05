@@ -65,6 +65,7 @@ const PROJECTS = [
       "Render",
       "Vercel",
       "TailwindCSS",
+      "Docker",
     ],
     links: {
       demo: "https://vericode-ten.vercel.app",
@@ -89,6 +90,12 @@ const PROJECTS = [
         title: "Shareable Links",
         description:
           "Every review saved to PostgreSQL with a unique UUID, accessible via permanent shareable URL.",
+      },
+      {
+        icon: "🐳",
+        title: "Containerized with Docker",
+        description:
+          "Full-stack app containerized using Docker and Docker Compose with multi-stage builds. Frontend served via nginx reducing image size to 101MB. Single command startup with docker-compose up.",
       },
     ],
   },
