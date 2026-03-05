@@ -45,6 +45,12 @@ const PROJECTS = [
         description:
           "Professional JSON toolkit with mock data generation, custom schemas, nested objects, 15+ data types, and full JSON parser for validation and formatting.",
       },
+      {
+        icon: "🐳",
+        title: "Containerized with Docker",
+        description:
+          "Full-stack app containerized using Docker and Docker Compose with multi-stage builds. Frontend served via nginx reducing image size to 101MB. Single command startup with docker-compose up.",
+      },
     ],
   },
   {
@@ -90,12 +96,6 @@ const PROJECTS = [
         title: "Shareable Links",
         description:
           "Every review saved to PostgreSQL with a unique UUID, accessible via permanent shareable URL.",
-      },
-      {
-        icon: "🐳",
-        title: "Containerized with Docker",
-        description:
-          "Full-stack app containerized using Docker and Docker Compose with multi-stage builds. Frontend served via nginx reducing image size to 101MB. Single command startup with docker-compose up.",
       },
     ],
   },
@@ -220,7 +220,7 @@ function ProjectsSection() {
                   Key Features
                 </h4>
 
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 gap-6">
                   {featuredProject.features.map((feature, idx) => (
                     <motion.div
                       key={idx}
