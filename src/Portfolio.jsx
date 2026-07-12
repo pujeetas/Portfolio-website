@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Header from "./Header";
 import ProjectsSection from "./ProjectSection";
 import ExperienceSection from "./ExperienceSection";
@@ -8,55 +9,28 @@ import SkillsTicker from "./SkillsTicker";
 
 const SECTIONS = ["home", "contact"];
 const HEADER_OFFSET = 96;
+const HeroScene = lazy(() => import("./three/HeroScene"));
+
+const CODE_MOTIF = `const engineer = {
+  name: "Pujeeta Singh",
+  location: "Singapore",
+  focus: "Full-Stack + RAG",
+  stack: ["React", "Node.js", "MongoDB"],
+  status: "shipping"
+};`;
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
-
-  // Typewriter State
-  const [typedCommand, setTypedCommand] = useState("");
-  const command = "npx display-profile";
-  const [showResults, setShowResults] = useState(false);
   const [nameGlitch, setNameGlitch] = useState(false);
 
   useEffect(() => {
-    // Create a repeating timer
     const interval = setInterval(() => {
-      setNameGlitch(true); // Turn glitch ON
-      setTimeout(() => {
-        setNameGlitch(false);
-      }, 300);
-    }, 3000); // Repeat every 5 seconds
+      setNameGlitch(true);
+      setTimeout(() => setNameGlitch(false), 300);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
-
-  // Typewriter Effect Logic
-  useEffect(() => {
-    const startDelay = setTimeout(() => {
-      if (typedCommand.length < command.length) {
-        const timeout = setTimeout(() => {
-          setTypedCommand(command.slice(0, typedCommand.length + 1));
-        }, 10);
-        return () => clearTimeout(timeout);
-      } else {
-        setTimeout(() => setShowResults(true), 300);
-      }
-    }, 800);
-    return () => clearTimeout(startDelay);
-  }, [typedCommand]);
-
-  // Terminal Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, when: "beforeChildren" },
-    },
-  };
-  const lineVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: { opacity: 1, x: 0 },
-  };
 
   /* Scroll Logic */
   const scrollToSection = (id) => {
@@ -89,134 +63,120 @@ export default function Portfolio() {
       {/* ================= HERO SECTION ================= */}
       <motion.section
         id="home"
-        initial={{ y: 32, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-        className="min-h-screen flex items-center justify-center px-6 md:px-12 pt-20 relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="min-h-screen flex flex-col items-center justify-center text-center px-6 md:px-12 pt-24 pb-16 relative overflow-hidden"
       >
-        {/* Background Grid */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-grid opacity-[0.15] pointer-events-none" />
-
-        {/* Kinetic Text Background */}
-        <div className="absolute inset-0 flex flex-col justify-center opacity-[0.03] select-none pointer-events-none overflow-hidden">
-          <div className="whitespace-nowrap animate-slide-left">
-            <span className="text-[12rem] font-bold font-engineer">
-              FULL-STACK DEVELOPER ENGINEER PROBLEM SOLVER&nbsp;
-            </span>
-            <span className="text-[12rem] font-bold font-engineer">
-              FULL-STACK DEVELOPER ENGINEER PROBLEM SOLVER&nbsp;
-            </span>
-          </div>
+        {/* Aurora Glow Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[10%] left-[15%] w-[26rem] h-[26rem] bg-indigo-600/10 rounded-full blur-[130px] animate-aurora" />
+          <div className="absolute bottom-[5%] right-[10%] w-[24rem] h-[24rem] bg-purple-600/10 rounded-full blur-[130px] animate-aurora [animation-delay:-6s]" />
+          <div className="absolute top-[40%] right-[35%] w-[20rem] h-[20rem] bg-cyan-500/[0.06] rounded-full blur-[110px] animate-aurora [animation-delay:-3s]" />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
-          {/* LEFT COLUMN */}
-          <div className="flex flex-col items-start pt-10 md:pt-0">
-            <span
-              className={`font-signature text-4xl text-zinc-400 mb-6 block glitch-hover w-max cursor-pointer ${
-                nameGlitch ? "glitch-active text-white" : ""
-              }`}
-              data-text="Pujeeta Singh"
-            >
-              Pujeeta Singh
+        {/* Background Grid */}
+        <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
+
+        {/* Ambient Code Motif */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] select-none pointer-events-none overflow-hidden">
+          <pre className="font-engineer text-sm md:text-lg text-zinc-400 leading-loose whitespace-pre">
+            {CODE_MOTIF}
+          </pre>
+        </div>
+
+        {/* 3D Particle Scene */}
+        <div className="absolute inset-0 z-[5]">
+          <Suspense fallback={null}>
+            <HeroScene />
+          </Suspense>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center pointer-events-none [&_button]:pointer-events-auto">
+          {/* Credibility Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/60 backdrop-blur-sm"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
+            <span className="font-engineer text-xs text-zinc-400 tracking-wide">
+              Open to Work &middot; Based in Singapore
+            </span>
+          </motion.div>
 
-            <h1 className="font-engineer text-4xl md:text-6xl leading-tight font-bold mb-6">
-              Full-Stack Engineer building <br className="hidden md:block" />
-              <span className="text-zinc-300">production-ready systems</span>
-            </h1>
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className={`font-signature text-3xl md:text-4xl text-zinc-400 mb-4 block glitch-hover w-max cursor-pointer ${
+              nameGlitch ? "glitch-active text-white" : ""
+            }`}
+            data-text="Pujeeta Singh"
+          >
+            Pujeeta Singh
+          </motion.span>
 
-            <p className="text-zinc-500 text-lg max-w-lg mb-10 leading-relaxed">
-              I build production-ready full-stack systems with a focus on
-              reliability, scalability, and real-world impact.
-            </p>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="font-engineer font-bold leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-8xl mb-8"
+          >
+            Full-Stack Engineer
+            <br />
+            <span className="bg-gradient-to-r from-white via-zinc-300 to-zinc-500 bg-clip-text text-transparent">
+              building systems that ship
+            </span>
+          </motion.h1>
 
-            <div className="flex gap-4">
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition border border-zinc-700 font-medium text-sm"
-              >
-                Contact me
-              </button>
-              <button
-                onClick={() => scrollToSection("projects")}
-                className="px-8 py-3 bg-transparent hover:bg-zinc-900 text-white rounded-lg transition font-medium text-sm border border-transparent hover:border-zinc-800"
-              >
-                View projects
-              </button>
-            </div>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="text-zinc-500 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
+          >
+            I build production-ready full-stack systems with a focus on
+            reliability, scalability, and real-world impact.
+          </motion.p>
 
-          {/* RIGHT COLUMN - TERMINAL */}
-          <div className="relative hidden md:block">
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-zinc-700/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-10 -left-10 w-40 h-40 bg-purple-900/10 rounded-full blur-2xl" />
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="flex flex-wrap justify-center gap-4 mb-12"
+          >
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="group flex items-center gap-2 px-8 py-3 bg-zinc-100 hover:bg-white text-zinc-950 rounded-lg transition-all font-medium text-sm shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+            >
+              Contact me
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="px-8 py-3 bg-transparent hover:bg-zinc-900 text-white rounded-lg transition font-medium text-sm border border-zinc-800 hover:border-zinc-700"
+            >
+              View projects
+            </button>
+          </motion.div>
 
-            <div className="relative w-full max-w-lg mx-auto bg-[#0F0F11] rounded-xl border border-zinc-800/80 shadow-2xl overflow-hidden backdrop-blur-sm">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 bg-zinc-900/50">
-                <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
-                <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
-                <div className="ml-2 text-xs text-zinc-500 font-engineer">
-                  pujeeta@portfolio:~/dev
-                </div>
-              </div>
-
-              <div className="p-6 md:p-8 font-engineer text-sm md:text-base leading-relaxed h-[420px]">
-                <div className="text-zinc-400 mb-4 flex items-center">
-                  <span className="text-green-400 mr-2">➜</span>
-                  <span className="text-blue-400 mr-2">~</span>
-                  {typedCommand}
-                  {!showResults && (
-                    <span className="w-2 h-4 bg-zinc-500 ml-1 animate-pulse" />
-                  )}
-                </div>
-
-                <motion.div
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate={showResults ? "visible" : "hidden"}
-                  className="space-y-1"
-                >
-                  <motion.div variants={lineVariants}>
-                    <span className="text-purple-400">const</span>{" "}
-                    <span className="text-yellow-200">developer</span>{" "}
-                    <span className="text-zinc-500">=</span>{" "}
-                    <span className="text-zinc-300">{`{`}</span>
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="pl-6">
-                    <span className="text-blue-300">name</span>:{" "}
-                    <span className="text-green-400">"Pujeeta Singh"</span>,
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="pl-6">
-                    <span className="text-blue-300">location</span>:{" "}
-                    <span className="text-green-400">"Singapore"</span>,
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="pl-6">
-                    <span className="text-blue-300">focus</span>:{" "}
-                    <span className="text-green-400">"Full-Stack + RAG"</span>,
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="pl-6">
-                    <span className="text-blue-300">stack</span>:{" "}
-                    <span className="text-zinc-300">[</span>
-                    <span className="text-green-400">"React"</span>,{" "}
-                    <span className="text-green-400">"Node.js"</span>
-                    <span className="text-zinc-300">]</span>,
-                  </motion.div>
-                  <motion.div variants={lineVariants}>
-                    <span className="text-zinc-300">{`}`}</span>;
-                  </motion.div>
-                  <motion.div
-                    variants={lineVariants}
-                    className="mt-4 flex items-center gap-2"
-                  >
-                    <span className="text-green-400">➜</span>
-                    <span className="w-2.5 h-5 bg-zinc-500 animate-pulse" />
-                  </motion.div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.85 }}
+            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-zinc-600 font-engineer text-xs uppercase tracking-widest"
+          >
+            <span>Full-Stack</span>
+            <span className="w-1 h-1 rounded-full bg-zinc-700" />
+            <span>AI &amp; RAG Systems</span>
+            <span className="w-1 h-1 rounded-full bg-zinc-700" />
+            <span>Shipped to Production</span>
+          </motion.div>
         </div>
       </motion.section>
 

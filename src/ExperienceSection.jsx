@@ -17,12 +17,103 @@ export default function ExperienceSection() {
           Experience
         </motion.h2>
 
+        {/* Freelance Full-Stack Developer */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8"
+        >
+          {/* Header */}
+          <div className="mb-6">
+            <h3 className="font-engineer text-2xl font-semibold">
+              Freelance Full-Stack Developer
+            </h3>
+            <p className="text-zinc-400 mt-1">Self-Employed</p>
+            <p className="text-zinc-500 text-sm mt-1">Jan 2025 – Present</p>
+            <p className="text-zinc-400 text-sm mt-3 italic">
+              Delivering custom full-stack systems for independent clients
+            </p>
+          </div>
+
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {[
+              "Custom Plugin Architecture",
+              "Booking Engine",
+              "Payment Integration",
+              "Admin Dashboard",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="text-xs px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Impact & Achievements */}
+          <div className="space-y-4 text-zinc-400">
+            <div className="flex gap-3">
+              <span className="text-zinc-500 mt-1">•</span>
+              <p>
+                Built a{" "}
+                <span className="text-white font-medium">
+                  custom booking engine from scratch
+                </span>{" "}
+                for a Singapore-based fitness studio client — handling trainer
+                availability, scheduling, and conflict prevention
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <span className="text-zinc-500 mt-1">•</span>
+              <p>
+                Integrated{" "}
+                <span className="text-white font-medium">Stripe</span> for
+                payment collection at time of booking
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <span className="text-zinc-500 mt-1">•</span>
+              <p>
+                Built an admin dashboard for staff to manage trainers and
+                appointments
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <span className="text-zinc-500 mt-1">•</span>
+              <p>
+                Delivered a customer-facing account area with booking
+                confirmations and reminders
+              </p>
+            </div>
+          </div>
+
+          {/* Relocation */}
+          <div className="border-t border-zinc-800 mt-8 pt-6">
+            <div className="flex gap-3 text-zinc-400">
+              <span className="text-zinc-500">•</span>
+              <p>
+                Relocated to Singapore in{" "}
+                <span className="text-white font-medium">Jan 2024</span> and
+                obtained work authorization
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Software Engineer - I */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+          className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 mt-8"
         >
           {/* Header */}
           <div className="mb-6">
@@ -119,27 +210,6 @@ export default function ExperienceSection() {
                 features used daily by{" "}
                 <span className="text-white font-medium">100K+ users</span>
               </p>
-            </div>
-          </div>
-
-          {/* Career Break */}
-          <div className="border-t border-zinc-800 mt-8 pt-6">
-            <h4 className="text-zinc-300 font-medium mb-2">
-              Career Break – Relocation to Singapore & Product Development
-            </h4>
-            <p className="text-zinc-400 text-sm mb-2">Jan 2024 – Present</p>
-            <div className="space-y-2 text-zinc-400">
-              <div className="flex gap-3">
-                <span className="text-zinc-500">•</span>
-                <p>Relocated to Singapore and obtained work authorization</p>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-zinc-500">•</span>
-                <p>
-                  Built production-grade full-stack SaaS applications and modern
-                  system architectures
-                </p>
-              </div>
             </div>
           </div>
         </motion.div>

@@ -2,6 +2,22 @@ import { motion } from "framer-motion";
 
 const PROJECTS = [
   {
+    id: 4,
+    title: "Sports Converge",
+    category: "Freelance — Custom Booking Engine & E-Commerce Platform",
+    description:
+      "Built a custom booking system from scratch for a Singapore-based fitness studio — comparable to commercial solutions like Amelia — handling trainer availability and scheduling with conflict prevention, Stripe payment collection at time of booking, an admin dashboard for managing trainers and appointments, and a customer-facing account area with booking confirmations and reminders.",
+    tech: [
+      "Custom Plugin Architecture",
+      "Booking Engine",
+      "Payment Integration",
+      "Admin Dashboard",
+    ],
+    links: {
+      demo: "https://sportsconverge.com",
+    },
+  },
+  {
     id: 1,
     title: "DailyDeck",
     category: "Full-Stack Productivity SaaS",
@@ -25,7 +41,6 @@ const PROJECTS = [
     },
     video: "/RAG_DEMO.mp4",
     image: "/dailydeck-screenshot.png",
-    featured: true,
     features: [
       {
         icon: "📝",
@@ -54,52 +69,6 @@ const PROJECTS = [
     ],
   },
   {
-    id: 2,
-    title: "Vericode",
-    category: "AI-Powered Code Review Tool",
-    description:
-      "Built a production full-stack code review platform powered by Claude AI. Architected a two-stage LLM pipeline — language detection followed by structured review — streamed back in real time using Server-Sent Events. Every review is saved to PostgreSQL with a UUID-based shareable link. Deployed on Vercel and Render, with initial infrastructure on AWS EC2.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "Claude API",
-      "PostgreSQL",
-      "Supabase",
-      "AWS EC2",
-      "Render",
-      "Vercel",
-      "TailwindCSS",
-      "Docker",
-    ],
-    links: {
-      demo: "https://vericode-ten.vercel.app",
-      github: "https://github.com/pujeetas/vericode",
-    },
-    featured: false,
-    features: [
-      {
-        icon: "🤖",
-        title: "AI Streaming Review",
-        description:
-          "Real-time code feedback streamed token-by-token using SSE and Claude API with auto language detection.",
-      },
-      {
-        icon: "🔒",
-        title: "5 Review Modes",
-        description:
-          "Security, performance, bug detection, documentation, and general quality reviews with automatic severity scoring.",
-      },
-      {
-        icon: "🔗",
-        title: "Shareable Links",
-        description:
-          "Every review saved to PostgreSQL with a unique UUID, accessible via permanent shareable URL.",
-      },
-    ],
-  },
-  {
     id: 3,
     title: "Portfolio Website",
     category: "Web Engineering",
@@ -110,14 +79,10 @@ const PROJECTS = [
       demo: "https://pujeeta.dev",
       github: "https://github.com/pujeetas/portfolio",
     },
-    featured: false,
   },
 ];
 
 function ProjectsSection() {
-  const featuredProject = PROJECTS.find((p) => p.featured);
-  const otherProjects = PROJECTS.filter((p) => !p.featured);
-
   return (
     <section
       id="projects"
@@ -131,33 +96,59 @@ function ProjectsSection() {
           transition={{ duration: 0.5 }}
           className="font-engineer text-3xl md:text-5xl font-bold mb-16"
         >
-          Featured Work
+          Projects
         </motion.h2>
 
-        {featuredProject && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-8 mb-20 hover:border-zinc-700 transition-all"
-          >
-            <div className="grid md:grid-cols-2 gap-12 mb-8">
-              <div className="flex flex-col justify-center">
-                <span className="text-sm text-zinc-500 mb-2">
-                  {featuredProject.category}
+        <div className="grid md:grid-cols-2 gap-8">
+          {PROJECTS.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (index % 2) * 0.15 }}
+              className="flex flex-col bg-zinc-900/40 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all"
+            >
+              <div className="relative aspect-video bg-zinc-950 border-b border-zinc-800 overflow-hidden">
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full bg-gradient-to-br from-zinc-900 to-zinc-950">
+                    <span className="font-engineer text-sm text-zinc-700 tracking-widest uppercase">
+                      {project.title}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col flex-1 p-6">
+                <span className="text-xs text-zinc-500 mb-1">
+                  {project.category}
                 </span>
 
-                <h3 className="font-engineer text-2xl md:text-3xl font-semibold mb-4">
-                  {featuredProject.title}
+                <h3 className="font-engineer text-xl font-semibold mb-3">
+                  {project.title}
                 </h3>
 
-                <p className="text-zinc-400 mb-6 leading-relaxed">
-                  {featuredProject.description}
+                <p className="text-zinc-400 text-sm leading-relaxed mb-5 line-clamp-4">
+                  {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {featuredProject.tech.map((tech) => (
+                  {project.tech.map((tech) => (
                     <span
                       key={tech}
                       className="text-xs px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700"
@@ -167,155 +158,33 @@ function ProjectsSection() {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
-                  <a
-                    href={featuredProject.links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm border border-zinc-700 transition"
-                  >
-                    View Demo
-                  </a>
-
-                  <a
-                    href={featuredProject.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2 bg-transparent hover:bg-zinc-800 rounded-lg text-sm border border-zinc-700 transition"
-                  >
-                    View Code
-                  </a>
-                </div>
-              </div>
-
-              <div className="relative rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 min-h-[400px]">
-                {featuredProject.video ? (
-                  <video
-                    src={featuredProject.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                ) : featuredProject.image ? (
-                  <img
-                    src={featuredProject.image}
-                    alt={`${featuredProject.title} screenshot`}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-full">
-                    <span className="font-engineer text-zinc-600">
-                      Project Preview
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {featuredProject.features && (
-              <div className="border-t border-zinc-800 pt-8">
-                <h4 className="font-engineer text-lg font-semibold mb-6 text-zinc-300">
-                  Key Features
-                </h4>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {featuredProject.features.map((feature, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: idx * 0.1 }}
-                      className="bg-zinc-800/40 border border-zinc-700/50 rounded-lg p-5 hover:border-zinc-600 transition-colors"
+                <div className="flex gap-4 text-sm mt-auto pt-4 border-t border-zinc-800/60">
+                  {project.links.demo && (
+                    <a
+                      href={project.links.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-400 hover:text-white transition"
                     >
-                      <div className="text-3xl mb-3">{feature.icon}</div>
-                      <h5 className="font-engineer text-base font-semibold mb-2 text-white">
-                        {feature.title}
-                      </h5>
-                      <p className="text-sm text-zinc-400 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  ))}
+                      Demo →
+                    </a>
+                  )}
+
+                  {project.links.github && (
+                    <a
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-400 hover:text-white transition"
+                    >
+                      Code →
+                    </a>
+                  )}
                 </div>
               </div>
-            )}
-          </motion.div>
-        )}
-
-        {otherProjects.length > 0 && (
-          <div>
-            <h3 className="font-engineer text-xl font-semibold mb-8 text-zinc-400">
-              Other Projects
-            </h3>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {otherProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 transition"
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-zinc-500">
-                      {project.category}
-                    </span>
-                    {project.status && (
-                      <span className="text-xs px-2 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 animate-[glow_2s_ease-in-out_infinite]">
-                        {project.status}
-                      </span>
-                    )}
-                  </div>
-
-                  <h4 className="font-engineer text-xl font-semibold mb-2">
-                    {project.title}
-                  </h4>
-
-                  <p className="text-zinc-400 text-sm mb-4">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="text-xs text-zinc-500">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-4 text-sm">
-                    {project.links.demo && (
-                      <a
-                        href={project.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-white transition"
-                      >
-                        Demo →
-                      </a>
-                    )}
-
-                    {project.links.github && (
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-white transition"
-                      >
-                        Code →
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
