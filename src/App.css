@@ -137,23 +137,3 @@
         box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
     }
 }
-
-/* Hero Aurora Blobs */
-@keyframes aurora {
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    33% {
-        transform: translate(30px, -20px) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-20px, 20px) scale(0.95);
-    }
-}
-
-.animate-aurora {
-    animation: aurora 14s ease-in-out infinite;
-}

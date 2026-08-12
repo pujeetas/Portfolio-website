@@ -16,6 +16,7 @@ const PROJECTS = [
     links: {
       demo: "https://sportsconverge.com",
     },
+    video: "/sportsconverge-demo.mp4",
   },
   {
     id: 1,
@@ -67,6 +68,22 @@ const PROJECTS = [
           "Full-stack app containerized using Docker and Docker Compose with multi-stage builds. Frontend served via nginx reducing image size to 101MB. Single command startup with docker-compose up.",
       },
     ],
+  },
+  {
+    id: 5,
+    title: "Fleet Management Platform",
+    category: "Freelance — Enterprise SaaS with Role-Based Access Control",
+    description:
+      "Built a maritime operations SaaS platform from scratch — React 19 + TypeScript on Supabase. Designed a 4-tier role-based permission system (super admin, admin, user, client) enforced via Postgres row-level security, including a trigger preventing self-escalation of privileges. Built a column-level access control system letting admins toggle field-level visibility and editability per client group, with masking for restricted data. Implemented core operational modules (vessel and fixture management) with master-detail layouts and section-by-section saving.",
+    tech: [
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Row-Level Security",
+      "Vite",
+    ],
+    links: {},
   },
   {
     id: 3,

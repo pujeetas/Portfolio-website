@@ -17,118 +17,26 @@ export default function ExperienceSection() {
           Experience
         </motion.h2>
 
-        {/* Freelance Full-Stack Developer */}
+        {/* eGain */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8"
+          className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 mb-8"
         >
-          {/* Header */}
           <div className="mb-6">
             <h3 className="font-engineer text-2xl font-semibold">
-              Freelance Full-Stack Developer
-            </h3>
-            <p className="text-zinc-400 mt-1">Self-Employed</p>
-            <p className="text-zinc-500 text-sm mt-1">Jan 2025 – Present</p>
-            <p className="text-zinc-400 text-sm mt-3 italic">
-              Delivering custom full-stack systems for independent clients
-            </p>
-          </div>
-
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {[
-              "Custom Plugin Architecture",
-              "Booking Engine",
-              "Payment Integration",
-              "Admin Dashboard",
-            ].map((tech) => (
-              <span
-                key={tech}
-                className="text-xs px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* Impact & Achievements */}
-          <div className="space-y-4 text-zinc-400">
-            <div className="flex gap-3">
-              <span className="text-zinc-500 mt-1">•</span>
-              <p>
-                Built a{" "}
-                <span className="text-white font-medium">
-                  custom booking engine from scratch
-                </span>{" "}
-                for a Singapore-based fitness studio client — handling trainer
-                availability, scheduling, and conflict prevention
-              </p>
-            </div>
-
-            <div className="flex gap-3">
-              <span className="text-zinc-500 mt-1">•</span>
-              <p>
-                Integrated{" "}
-                <span className="text-white font-medium">Stripe</span> for
-                payment collection at time of booking
-              </p>
-            </div>
-
-            <div className="flex gap-3">
-              <span className="text-zinc-500 mt-1">•</span>
-              <p>
-                Built an admin dashboard for staff to manage trainers and
-                appointments
-              </p>
-            </div>
-
-            <div className="flex gap-3">
-              <span className="text-zinc-500 mt-1">•</span>
-              <p>
-                Delivered a customer-facing account area with booking
-                confirmations and reminders
-              </p>
-            </div>
-          </div>
-
-          {/* Relocation */}
-          <div className="border-t border-zinc-800 mt-8 pt-6">
-            <div className="flex gap-3 text-zinc-400">
-              <span className="text-zinc-500">•</span>
-              <p>
-                Relocated to Singapore in{" "}
-                <span className="text-white font-medium">Jan 2024</span> and
-                obtained work authorization
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Software Engineer - I */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-          className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 mt-8"
-        >
-          {/* Header */}
-          <div className="mb-6">
-            <h3 className="font-engineer text-2xl font-semibold">
-              Software Engineer – I
+              Software Engineer
             </h3>
             <p className="text-zinc-400 mt-1">eGain Communications</p>
             <p className="text-zinc-500 text-sm mt-1">Mar 2022 – Jan 2024</p>
             <p className="text-zinc-400 text-sm mt-3 italic">
               Built and scaled enterprise CRM systems serving 125K+ daily active
-              users
+              users across Fortune 500 clients
             </p>
           </div>
 
-          {/* Tech Stack */}
           <div className="flex flex-wrap gap-2 mb-8">
             {[
               "React",
@@ -137,7 +45,6 @@ export default function ExperienceSection() {
               "Node.js",
               "Express",
               "REST APIs",
-              "WebSockets",
               "PostgreSQL",
               "MongoDB",
               "AWS",
@@ -152,63 +59,128 @@ export default function ExperienceSection() {
             ))}
           </div>
 
-          {/* Impact & Achievements */}
           <div className="space-y-4 text-zinc-400">
             <div className="flex gap-3">
               <span className="text-zinc-500 mt-1">•</span>
               <p>
-                Built and scaled core CRM features used by{" "}
-                <span className="text-white font-medium">
-                  125K+ daily active users
-                </span>{" "}
-                across customer support operations
+                Built a role-based article retrieval feature in React with
+                admin-controlled visibility — cut agent search time by{" "}
+                <span className="text-white font-medium">~80%</span> and
+                eliminated a fully manual lookup process across a{" "}
+                <span className="text-white font-medium">125K+ user</span> CRM
+                platform
               </p>
             </div>
 
             <div className="flex gap-3">
               <span className="text-zinc-500 mt-1">•</span>
               <p>
-                Improved frontend performance by{" "}
-                <span className="text-white font-medium">35%</span>, increasing
-                user engagement by{" "}
-                <span className="text-white font-medium">28%</span> through
-                React optimization and state refactoring in high-traffic
-                environments
+                Improved page load speed by{" "}
+                <span className="text-white font-medium">35%</span> through
+                lazy loading, state management refactoring, and component
+                restructuring — engagement went up{" "}
+                <span className="text-white font-medium">28%</span> after the
+                rollout
               </p>
             </div>
 
             <div className="flex gap-3">
               <span className="text-zinc-500 mt-1">•</span>
               <p>
-                Designed API services for automated email classification and SLA
-                triggers, reducing manual support workload across enterprise
-                clients
+                Diagnosed and fixed critical bugs in the email routing and SLA
+                trigger system across Fortune 500 client deployments,
+                resolving incorrect queue assignments, misfiring timers, and
+                workflow failures
               </p>
             </div>
 
             <div className="flex gap-3">
               <span className="text-zinc-500 mt-1">•</span>
               <p>
-                Delivered real-time agent dashboards using{" "}
-                <span className="text-white font-medium">WebSockets</span> to
-                improve response visibility and resolution speed
+                Owned and extended the core Node.js APIs consumed by email,
+                knowledge hub, and professional services teams — fixed broken
+                endpoints, corrected bad data responses, and shipped new APIs
+                to unblock dependent teams
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Freelance */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+          className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8"
+        >
+          <div className="mb-6">
+            <h3 className="font-engineer text-2xl font-semibold">
+              Freelance Full-Stack Developer
+            </h3>
+            <p className="text-zinc-500 text-sm mt-1">Jan 2025 – Present</p>
+            <p className="text-zinc-400 text-sm mt-3 italic">
+              Full-stack and React Native projects for Singapore-based clients
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-8">
+            {[
+              "React 19",
+              "React Native",
+              "TypeScript",
+              "Node.js",
+              "PostgreSQL",
+              "Row-Level Security",
+              "Stripe",
+              "Firebase",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="text-xs px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="space-y-4 text-zinc-400">
+            <div className="flex gap-3">
+              <span className="text-zinc-500 mt-1">•</span>
+              <p>
+                Built a custom booking and session management plugin from
+                scratch for a Singapore-based fitness business — class
+                scheduling, member management, Stripe payments, and automated
+                email reminders; delivered solo from requirements through
+                deployment
               </p>
             </div>
 
             <div className="flex gap-3">
               <span className="text-zinc-500 mt-1">•</span>
               <p>
-                Stabilized high-traffic Node.js services, reducing production
-                incidents and improving system uptime
+                Built a maritime SaaS platform from scratch — React 19 +
+                TypeScript, with a 4-role permission system (super admin,
+                admin, user, client) enforced through custom row-level
+                security policies and a self-escalation-blocking trigger
+                written in Postgres
               </p>
             </div>
 
             <div className="flex gap-3">
               <span className="text-zinc-500 mt-1">•</span>
               <p>
-                Collaborated with product and QA in Agile sprints to ship
-                features used daily by{" "}
-                <span className="text-white font-medium">100K+ users</span>
+                Built a column-level access control system — admins can toggle
+                which fields each client group can see or edit, down to
+                individual columns, with masking for restricted fields
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <span className="text-zinc-500 mt-1">•</span>
+              <p>
+                Built out core business modules (list/detail/edit views) with
+                section-by-section saving instead of one big form save
               </p>
             </div>
           </div>
